@@ -1,0 +1,36 @@
+public class AutomaticTollSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Automatic Toll System!");
+
+        // Get vehicle type
+        System.out.print("Enter vehicle type (car/truck): ");
+        String vehicleType = scanner.next();
+
+        // Get distance traveled
+        System.out.print("Enter distance traveled (in miles): ");
+        double distance = scanner.nextDouble();
+
+        // Calculate toll based on vehicle type and distance
+        double toll = calculateToll(vehicleType, distance);
+
+        System.out.println("Toll amount: $" + toll);
+
+        scanner.close();
+    }
+
+    public static double calculateToll(String vehicleType, double distance) {
+        double rate;
+        if (vehicleType.equalsIgnoreCase("car")) {
+            rate = 0.1; // $0.10 per mile for cars
+        } else if (vehicleType.equalsIgnoreCase("truck")) {
+            rate = 0.2; // $0.20 per mile for trucks
+        } else {
+            System.out.println("Invalid vehicle type. Please enter 'car' or 'truck'.");
+            return 0.0;
+        }
+
+        return rate * distance;
+    }
+}
